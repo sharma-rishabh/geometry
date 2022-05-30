@@ -1,7 +1,8 @@
-const fs = require('fs');
 const { Style } = require('./styles.js');
 
 const square = x => x * x;
+
+const rotateInRadians = (rad) => `rotate(${rad}rad)`
 
 class Line {
   constructor(startPoint, endPoint) {
@@ -24,7 +25,7 @@ class Line {
   }
 
   slopeInRad() {
-    return Math.atan(this.slope());
+    return Math.atan(this.slope()).toFixed(2);
   }
 
   slope() {
@@ -38,15 +39,14 @@ class Line {
     style.addAttribute('width', `${width}px`);
     style.addAttribute('height', '0px');
     style.addAttribute('transform-origin', 'left')
-    style.addAttribute('transform', `rotate(${this.slopeInRad().toFixed(2)}rad)`);
-    style.addAttribute('border', '1px solid black');
+    style.addAttribute('transform', rotateInRadians(this.slopeInRad()));
+    style.addAttribute('border', '0.5px solid black');
     style.addAttribute('position', 'absolute');
     style.addAttribute('top', `${this.startPoint.y}`)
     style.addAttribute('left', `${this.startPoint.x}`)
 
-    return `<div ${style.toString()}/>`;
+    return `<div ${style.toString()} ></div>`;
   }
 }
 
-const line = new Line({ x: 100, y: 100 }, { x: 100, y: 1200 });
-fs.writeFileSync('./line.html', line.toHtml(), 'utf8')
+exports.Line = Line;
