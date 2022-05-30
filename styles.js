@@ -1,11 +1,14 @@
 class Style {
-  constructor(attribute, value) {
-    this.attribute = attribute;
-    this.value = value;
+  constructor() {
+    this.styles = '';
+  }
+
+  addAttribute(attribute, value) {
+    this.styles += `${attribute}:${value};`
   }
 
   toString() {
-    return `${this.attribute}:${this.value};`
+    return `style="${this.styles}"`;
   }
 }
 
