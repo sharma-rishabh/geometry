@@ -1,3 +1,5 @@
+const { Style } = require('styles.js');
+
 const square = x => x * x;
 
 class Line {
