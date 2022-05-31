@@ -10,6 +10,12 @@ class Circle {
     this.radius = radius;
   }
 
+  equals(anotherCircle) {
+    return anotherCircle instanceof Circle &&
+      anotherCircle.origin.equals(this.origin) &&
+      anotherCircle.radius === this.radius
+  }
+
   toHtml() {
     const style = new Style();
     const diameter = this.radius * 2;
