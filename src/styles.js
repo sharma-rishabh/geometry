@@ -4,7 +4,7 @@ class Style {
   }
 
   addAttribute(attribute, value) {
-    this.styles += `${attribute}:${value};`
+    return this.styles += `${attribute}:${value};`
   }
 
   toString() {
