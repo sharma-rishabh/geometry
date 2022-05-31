@@ -2,7 +2,11 @@ const { Style } = require('./styles.js');
 
 const square = x => x * x;
 
-const rotateInRadians = (rad) => `rotate(${rad}rad)`
+const rotateInRadians = (rad) => `rotate(${rad}rad)`;
+
+const wrapWithTag = (tagName, content, attribute = '') => {
+  return `<${tagName} ${attribute}>${content}</${tagName}>`;
+};
 
 class Line {
   constructor(startPoint, endPoint) {
@@ -45,7 +49,7 @@ class Line {
     style.addAttribute('top', `${this.startPoint.y}`)
     style.addAttribute('left', `${this.startPoint.x}`)
 
-    return `<div ${style.toString()} ></div>`;
+    return wrapWithTag('div', '', style.toString());
   }
 }
 

@@ -1,5 +1,9 @@
 const { Style } = require('./styles.js');
 
+const wrapWithTag = (tagName, content, attribute = '') => {
+  return `<${tagName} ${attribute}>${content}</${tagName}>`;
+};
+
 class Circle {
   constructor(origin, radius) {
     this.origin = origin;
@@ -18,7 +22,7 @@ class Circle {
     style.addAttribute('top', ` ${this.origin.y - this.radius}px`);
     style.addAttribute('left', ` ${this.origin.x - this.radius}px`);
 
-    return `<div ${style.toString()} ></div>`;
+    return wrapWithTag('div', '', style.toString());
   }
 };
 
