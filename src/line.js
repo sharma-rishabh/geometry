@@ -14,26 +14,31 @@ class Line {
     this.endPoint = endPoint;
   }
 
-  deltaY() {
+  equals(anotherLine) {
+    return anotherLine instanceof Line &&
+      anotherLine.startPoint.equals(this.startPoint) &&
+      anotherLine.endPoint.equals(this.endPoint);
+  }
+
+  #deltaY() {
     return this.endPoint.y - this.startPoint.y;
   }
 
-  deltaX() {
+  #deltaX() {
     return this.endPoint.x - this.startPoint.x;
   }
 
   length() {
-    const base = square(this.deltaX());
-    const height = square(this.deltaY());
-    return Math.sqrt(base + height);
+    return this.startPoint.distanceFrom(this.endPoint);
   }
 
   slopeInRad() {
-    return Math.atan(this.slope()).toFixed(2);
+    const radians = Math.atan(this.slope());
+    return parseFloat(radians.toFixed(2));
   }
 
   slope() {
-    return (this.deltaY()) / (this.deltaX());
+    return (this.#deltaY()) / (this.#deltaX());
   }
 
   toHtml() {
