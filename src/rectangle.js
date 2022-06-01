@@ -11,6 +11,17 @@ class Rectangle {
     this.breadth = breadth
   }
 
+  equals(anotherRectangle) {
+    return anotherRectangle instanceof Rectangle &&
+      this.origin.equals(anotherRectangle.origin) &&
+      this.breadth === anotherRectangle.breadth &&
+      this.length === anotherRectangle.length
+  }
+
+  area() {
+    return this.length * this.breadth;
+  }
+
   toHtml() {
     const style = new Style;
 
